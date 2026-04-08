@@ -2,6 +2,7 @@ import { useState, FormEvent } from "react";
 import { MapPin, Mail, Phone, Clock, Linkedin, Facebook } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import PageHero from "@/components/PageHero";
+import SEO from "@/components/SEO";
 import { toast } from "sonner";
 
 const ContactPage = () => {
@@ -15,6 +16,11 @@ const ContactPage = () => {
 
   return (
     <main>
+      <SEO
+        title="Contact Us | Kitso Nexus Advisory"
+        description="Get in touch with Kitso Nexus Advisory. Book a free consultation or send us a message. Based in Gaborone, Botswana."
+        path="/contact"
+      />
       <PageHero
         label="Contact"
         title="Get in touch"

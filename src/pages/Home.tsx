@@ -1,6 +1,7 @@
 import { Settings, Wrench, Users, ClipboardList, Database, HeadphonesIcon } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import SEO from "@/components/SEO";
 
 const services = [
   {
@@ -50,6 +51,11 @@ const steps = [
 
 const HomePage = () => (
   <main>
+    <SEO
+      title="Kitso Nexus Advisory | ERP Consulting & Implementation in Botswana"
+      description="Kitso Nexus Advisory helps businesses in Southern Africa streamline operations with expert ERP consulting and implementation. Based in Gaborone, Botswana."
+      path="/"
+    />
     {/* HERO */}
     <section
       className="bg-navy pt-[68px] relative overflow-hidden"
