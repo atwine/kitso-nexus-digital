@@ -120,7 +120,7 @@ const ContactPage = () => {
                 {[
                   { icon: MapPin, label: "Gaborone, Botswana" },
                   { icon: Mail, label: "info@kitsonexus.com" },
-                  { icon: Phone, label: "+267 XX XXX XXXX" },
+                  { icon: Phone, label: "+267 73 989 514" },
                   { icon: Clock, label: "Monday–Friday, 8:00 AM – 5:00 PM (CAT)" },
                 ].map(({ icon: Icon, label }, i) => (
                   <div key={i} className="flex items-center gap-3 text-sm text-muted-foreground">
