@@ -87,7 +87,7 @@ const Footer = () => (
           <div className="space-y-2 text-sm text-primary-foreground/60">
             <p>📍 Gaborone, Botswana</p>
             <p>✉️ info@kitsonexus.com</p>
-            <p>📞 +267 XX XXX XXXX</p>
+            <p>📞  +267 73 989 514</p>
             <p>🕐 Mon–Fri, 8:00 AM – 5:00 PM (CAT)</p>
           </div>
         </div>
