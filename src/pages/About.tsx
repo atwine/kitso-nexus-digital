@@ -3,13 +3,13 @@ import PageHero from "@/components/PageHero";
 const team = [
   {
     initials: "AT",
-    name: "Atwine",
+    name: "Mr. Mugume T Atwine",
     role: "Technical Lead",
     bio: "Specializes in ERP implementation, system customization, and technical architecture. Ensures every solution is built right.",
   },
   {
     initials: "MF",
-    name: "Mr. Fredrick",
+    name: "Mr. Fredrick Maripe",
     role: "Business Development",
     bio: "Leads client relationships, requirements gathering, and strategic advisory. Your first point of contact.",
   },
