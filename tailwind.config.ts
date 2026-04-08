@@ -13,7 +13,16 @@ export default {
       },
     },
     extend: {
+      fontFamily: {
+        sans: ["'Plus Jakarta Sans'", "sans-serif"],
+      },
       colors: {
+        navy: "hsl(var(--navy))",
+        teal: "hsl(var(--teal))",
+        blue: "hsl(var(--blue))",
+        whatsapp: "hsl(var(--whatsapp))",
+        surface: "hsl(var(--surface))",
+        "border-custom": "hsl(var(--border-custom))",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
@@ -65,20 +74,12 @@ export default {
       },
       keyframes: {
         "accordion-down": {
-          from: {
-            height: "0",
-          },
-          to: {
-            height: "var(--radix-accordion-content-height)",
-          },
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
         },
         "accordion-up": {
-          from: {
-            height: "var(--radix-accordion-content-height)",
-          },
-          to: {
-            height: "0",
-          },
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
         },
       },
       animation: {
