@@ -1,6 +1,7 @@
 import { Settings, Wrench, Users, ClipboardList, Database, HeadphonesIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import PageHero from "@/components/PageHero";
+import SEO from "@/components/SEO";
 
 const services = [
   {
@@ -43,6 +44,11 @@ const services = [
 
 const ServicesPage = () => (
   <main>
+    <SEO
+      title="Our Services | ERP Implementation, Training & Support | Kitso Nexus"
+      description="Explore our ERP services: implementation, customization, training, data migration, and ongoing support retainers across Southern Africa."
+      path="/services"
+    />
     <PageHero
       label="Our Services"
       title="What we do"
