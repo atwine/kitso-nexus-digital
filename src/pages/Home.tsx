@@ -166,7 +166,7 @@ const HomePage = () => (
           <a href="https://calendly.com" target="_blank" rel="noopener noreferrer">
             <Button variant="hero" size="lg">Book a Free Consultation</Button>
           </a>
-          <a href="https://wa.me/267XXXXXXXX" target="_blank" rel="noopener noreferrer">
+          <a href="https://wa.me/26773989514" target="_blank" rel="noopener noreferrer">
             <Button variant="whatsapp" size="lg">Chat on WhatsApp</Button>
           </a>
           <Link to="/contact">

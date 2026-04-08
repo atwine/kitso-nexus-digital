@@ -24,7 +24,7 @@ const Footer = () => (
             {[
               { icon: Linkedin, href: "#" },
               { icon: Facebook, href: "#" },
-              { icon: MessageCircle, href: "https://wa.me/267XXXXXXXX" },
+              { icon: MessageCircle, href: "https://wa.me/26773989514" },
             ].map(({ icon: Icon, href }, i) => (
               <a
                 key={i}
