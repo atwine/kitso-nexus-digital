@@ -129,3 +129,25 @@
     transform: translateY(0);
   }
 }
+
+@layer components {
+  .hero-section {
+    background-color: hsl(var(--navy));
+    background-image:
+      radial-gradient(ellipse 600px 400px at 80% 20%, hsl(73 56% 49% / 0.15), transparent),
+      radial-gradient(ellipse 500px 400px at 20% 80%, hsl(14 52% 50% / 0.12), transparent),
+      url('/hero/abstract-tech-16x9.webp');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  @media (max-width: 1024px) {
+    .hero-section {
+      background-image:
+        radial-gradient(ellipse 600px 400px at 80% 20%, hsl(73 56% 49% / 0.15), transparent),
+        radial-gradient(ellipse 500px 400px at 20% 80%, hsl(14 52% 50% / 0.12), transparent),
+        url('/hero/abstract-tech-4x3.webp');
+    }
+  }
+}
