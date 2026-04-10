@@ -60,11 +60,15 @@ const HomePage = () => (
     <section
       className="bg-navy pt-[68px] relative overflow-hidden"
       style={{
-        background: `
+        backgroundImage: `
           radial-gradient(ellipse 600px 400px at 80% 20%, hsl(73 56% 49% / 0.15), transparent),
           radial-gradient(ellipse 500px 400px at 20% 80%, hsl(14 52% 50% / 0.12), transparent),
-          hsl(180 100% 15%)
+          url('/hero/abstract-tech-16x9.webp')
         `,
+        backgroundColor: 'hsl(180 100% 15%)',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
       }}
     >
       <div className="container mx-auto px-4 lg:px-8 py-20 md:py-28 lg:py-36">

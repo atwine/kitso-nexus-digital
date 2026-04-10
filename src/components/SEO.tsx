@@ -6,11 +6,15 @@ interface SEOProps {
   path: string;
 }
 
-const BASE_URL = "https://www.kitsonexus.com";
-const OG_IMAGE = `${BASE_URL}/logo.jpeg`;
+const DEFAULT_SITE_URL =
+  typeof window !== "undefined" && window.location && window.location.origin
+    ? window.location.origin
+    : "https://www.kitsonexus.com";
+const SITE_URL = (import.meta as any).env?.VITE_SITE_URL || DEFAULT_SITE_URL;
+const OG_IMAGE = `${SITE_URL}/logo.jpeg`;
 
 const SEO = ({ title, description, path }: SEOProps) => {
-  const url = `${BASE_URL}${path}`;
+  const url = `${SITE_URL}${path}`;
 
   useEffect(() => {
     document.title = title;
