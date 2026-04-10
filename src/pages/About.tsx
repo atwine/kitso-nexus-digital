@@ -51,7 +51,22 @@ const AboutPage = () => (
       label="Who We Are"
       title="About Kitso Nexus Advisory"
       subtitle="A dedicated ERP consulting firm helping businesses across Southern Africa operate smarter, faster, and more efficiently."
-    />
+    >
+      <div className="mt-4 flex flex-wrap gap-3 text-sm text-primary-foreground/85">
+        {["Botswana-based", "ERP-first", "Partnership-driven"].map((chip) => (
+          <span key={chip} className="px-3 py-2 rounded-md border-2 border-primary-foreground">
+            {chip}
+          </span>
+        ))}
+      </div>
+      <div className="mt-4 flex flex-wrap gap-3 text-sm text-primary-foreground/85">
+        {industries.slice(0, 4).map((ind) => (
+          <span key={ind} className="px-3 py-2 rounded-md border-2 border-primary-foreground">
+            {ind}
+          </span>
+        ))}
+      </div>
+    </PageHero>
 
     {/* Our Story */}
     <section className="py-16 md:py-20">

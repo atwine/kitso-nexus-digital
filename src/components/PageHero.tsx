@@ -8,8 +8,8 @@ interface PageHeroProps {
 }
 
 const PageHero = ({ label, title, subtitle, children }: PageHeroProps) => (
-  <section className="bg-navy pt-[68px]">
-    <div className="container mx-auto px-4 lg:px-8 py-16 md:py-20">
+  <section className="bg-navy hero-section pt-[68px] min-h-[420px] md:min-h-[500px] lg:min-h-[560px]">
+    <div className="container mx-auto px-4 lg:px-8 py-12 md:py-[4.5rem] lg:py-20">
       {label && <p className="section-label mb-3 fade-in">{label}</p>}
       <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary-foreground mb-4 fade-in fade-in-delay-1">
         {title}
@@ -19,6 +19,8 @@ const PageHero = ({ label, title, subtitle, children }: PageHeroProps) => (
       </p>
       {children}
     </div>
+    {/* Subtle gradient fade at hero bottom */}
+    <div className="h-8 bg-gradient-to-b from-transparent to-black/10" />
   </section>
 );
 

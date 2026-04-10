@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import PageHero from "@/components/PageHero";
 import SEO from "@/components/SEO";
 
+
 const services = [
   {
     icon: Settings,
@@ -53,14 +54,49 @@ const ServicesPage = () => (
       label="Our Services"
       title="What we do"
       subtitle="End-to-end ERP consulting services designed for businesses across Southern Africa. From strategy to support, we've got you covered."
-    />
+    >
+      <div className="mt-4 flex flex-wrap gap-2">
+        {[
+          { label: "Implementation", href: "#" + "erp-implementation" },
+          { label: "Customization", href: "#" + "customization-and-studio-work" },
+          { label: "Training", href: "#" + "training-and-user-support" },
+          { label: "Consulting", href: "#" + "business-process-consulting" },
+          { label: "Data Migration", href: "#" + "data-migration" },
+          { label: "Support", href: "#" + "ongoing-support-retainers" },
+        ].map((t) => (
+          <a
+            key={t.label}
+            href={t.href}
+            className="px-3 py-2 rounded-md border-2 border-primary-foreground text-sm text-primary-foreground hover:bg-primary-foreground/10 transition-colors"
+          >
+            {t.label}
+          </a>
+        ))}
+      </div>
+
+      <div className="mt-6 flex flex-wrap gap-3 text-sm text-primary-foreground/80">
+        {[
+          "Botswana-based",
+          "End-to-end ERP",
+          "From strategy to support",
+        ].map((chip) => (
+          <span
+            key={chip}
+            className="px-3 py-2 rounded-md border-2 border-primary-foreground text-sm text-primary-foreground"
+          >
+            {chip}
+          </span>
+        ))}
+      </div>
+    </PageHero>
 
     <section className="py-16 md:py-20">
       <div className="container mx-auto px-4 lg:px-8 space-y-8">
         {services.map((s, i) => (
           <div
             key={i}
-            className="card-service flex flex-col md:flex-row gap-6 items-start fade-in"
+            id={s.title.toLowerCase().replace(/&/g, 'and').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')}
+            className="card-service flex flex-col md:flex-row gap-6 items-start fade-in scroll-mt-[80px]"
           >
             <div className="w-12 h-12 bg-teal rounded-lg flex items-center justify-center shrink-0">
               <s.icon size={24} className="text-primary-foreground" />

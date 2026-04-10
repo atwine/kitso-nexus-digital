@@ -25,7 +25,22 @@ const ContactPage = () => {
         label="Contact"
         title="Get in touch"
         subtitle="Have a question, need a quote, or ready to get started? We'd love to hear from you."
-      />
+      >
+        <div className="mt-4 grid grid-cols-1 sm:grid-cols-3 gap-3 text-sm text-primary-foreground/85 max-w-3xl">
+          <div className="flex items-center gap-2 rounded-md px-3 py-2 border-2 border-primary-foreground">
+            <Mail size={16} className="text-teal" />
+            <span>info@kitsonexus.com</span>
+          </div>
+          <div className="flex items-center gap-2 rounded-md px-3 py-2 border-2 border-primary-foreground">
+            <Phone size={16} className="text-teal" />
+            <span>+267 73 989 514</span>
+          </div>
+          <div className="flex items-center gap-2 rounded-md px-3 py-2 border-2 border-primary-foreground">
+            <Clock size={16} className="text-teal" />
+            <span>Mon–Fri, 8:00–17:00 (CAT)</span>
+          </div>
+        </div>
+      </PageHero>
 
       {/* Quick actions */}
       <section className="py-10">
