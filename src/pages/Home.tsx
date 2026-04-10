@@ -2,6 +2,7 @@ import { Settings, Wrench, Users, ClipboardList, Database, HeadphonesIcon, Searc
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import SEO from "@/components/SEO";
+import Reviews from "@/components/Reviews";
 
 const services = [
   {
@@ -160,6 +161,8 @@ const HomePage = () => (
         </div>
       </div>
     </section>
+
+    <Reviews />
 
     {/* CTA BAND */}
     <section className="bg-surface py-16">
