@@ -1,4 +1,4 @@
-import { Settings, Wrench, Users, ClipboardList, Database, HeadphonesIcon } from "lucide-react";
+import { Settings, Wrench, Users, ClipboardList, Database, HeadphonesIcon, Search, PenTool, Rocket, LifeBuoy } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import SEO from "@/components/SEO";
@@ -43,10 +43,10 @@ const services = [
 ];
 
 const steps = [
-  { num: "1", title: "Discovery", desc: "We learn your business, systems, and pain points." },
-  { num: "2", title: "Design", desc: "We map the solution to your workflows and goals." },
-  { num: "3", title: "Deliver", desc: "We configure, customize, migrate, and launch." },
-  { num: "4", title: "Support", desc: "We stay with you — training, fixes, and optimization." },
+  { num: "1", icon: Search, title: "Discovery", desc: "We learn your business, systems, and pain points.", color: "text-teal", bg: "bg-teal/10" },
+  { num: "2", icon: PenTool, title: "Design", desc: "We map the solution to your workflows and goals.", color: "text-blue-400", bg: "bg-blue-400/10" },
+  { num: "3", icon: Rocket, title: "Deliver", desc: "We configure, customize, migrate, and launch.", color: "text-amber-500", bg: "bg-amber-500/10" },
+  { num: "4", icon: LifeBuoy, title: "Support", desc: "We stay with you — training, fixes, and optimization.", color: "text-violet-400", bg: "bg-violet-400/10" },
 ];
 
 const HomePage = () => (
@@ -129,24 +129,34 @@ const HomePage = () => (
     <section className="py-16 md:py-20">
       <div className="container mx-auto px-4 lg:px-8">
         <p className="section-label mb-2 text-center">Our Process</p>
-        <h2 className="text-2xl md:text-3xl font-bold text-center mb-10">How We Work</h2>
-        <div className="border border-custom rounded-lg p-8">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            {steps.map((step, i) => (
-              <div
-                key={i}
-                className={`text-center md:text-left ${
-                  i < steps.length - 1 ? "md:border-r md:border-border-custom md:pr-8" : ""
-                }`}
-              >
-                <div className="w-10 h-10 bg-teal rounded-full flex items-center justify-center text-primary-foreground font-bold text-sm mx-auto md:mx-0 mb-3">
-                  {step.num}
-                </div>
-                <h3 className="font-bold mb-1">{step.title}</h3>
-                <p className="text-muted-foreground text-sm">{step.desc}</p>
+        <h2 className="text-2xl md:text-3xl font-bold text-center mb-12">How We Work</h2>
+
+        {/* Timeline circles – desktop */}
+        <div className="hidden md:flex items-center justify-between mb-10 relative px-8">
+          <div className="absolute left-8 right-8 top-1/2 h-0.5 bg-border -translate-y-1/2 z-0" />
+          {steps.map((step, i) => (
+            <div key={i} className="relative z-10 flex flex-col items-center">
+              <div className="w-12 h-12 bg-navy rounded-full flex items-center justify-center text-primary-foreground font-bold text-lg border-4 border-teal">
+                {step.num}
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Step cards */}
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+          {steps.map((step, i) => (
+            <div key={i} className="border border-custom rounded-lg p-6 text-center hover:shadow-md transition-shadow fade-in">
+              <div className={`w-12 h-12 ${step.bg} rounded-lg flex items-center justify-center mx-auto mb-4`}>
+                <step.icon size={22} className={step.color} />
+              </div>
+              <div className="md:hidden w-8 h-8 bg-navy rounded-full flex items-center justify-center text-primary-foreground font-bold text-xs mx-auto mb-3">
+                {step.num}
+              </div>
+              <h3 className="font-bold text-lg mb-2">{step.title}</h3>
+              <p className="text-muted-foreground text-sm leading-relaxed">{step.desc}</p>
+            </div>
+          ))}
         </div>
       </div>
     </section>
