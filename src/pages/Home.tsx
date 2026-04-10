@@ -61,9 +61,9 @@ const HomePage = () => (
       className="bg-navy pt-[68px] relative overflow-hidden"
       style={{
         background: `
-          radial-gradient(ellipse 600px 400px at 80% 20%, hsl(157 76% 24% / 0.15), transparent),
-          radial-gradient(ellipse 500px 400px at 20% 80%, hsl(213 74% 37% / 0.12), transparent),
-          hsl(214 67% 15%)
+          radial-gradient(ellipse 600px 400px at 80% 20%, hsl(73 56% 49% / 0.15), transparent),
+          radial-gradient(ellipse 500px 400px at 20% 80%, hsl(14 52% 50% / 0.12), transparent),
+          hsl(180 100% 15%)
         `,
       }}
     >

@@ -8,51 +8,51 @@
   :root {
     --font-sans: 'Plus Jakarta Sans', sans-serif;
 
-    --navy: 214 67% 15%;
-    --teal: 157 76% 24%;
-    --blue: 213 74% 37%;
+    --navy: 180 100% 15%;
+    --teal: 73 56% 49%;
+    --blue: 14 52% 50%;
     --whatsapp: 142 70% 49%;
-    --surface: 0 0% 96%;
-    --border-custom: 0 0% 91%;
+    --surface: 38 50% 91%;
+    --border-custom: 38 30% 85%;
 
-    --background: 0 0% 100%;
-    --foreground: 214 67% 15%;
+    --background: 40 100% 95%;
+    --foreground: 0 0% 20%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 214 67% 15%;
+    --card: 40 100% 97%;
+    --card-foreground: 0 0% 20%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 214 67% 15%;
+    --popover: 40 100% 97%;
+    --popover-foreground: 0 0% 20%;
 
-    --primary: 213 74% 37%;
+    --primary: 14 52% 50%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 0 0% 96%;
-    --secondary-foreground: 214 67% 15%;
+    --secondary: 38 50% 91%;
+    --secondary-foreground: 0 0% 20%;
 
-    --muted: 0 0% 96%;
-    --muted-foreground: 0 0% 45%;
+    --muted: 38 30% 90%;
+    --muted-foreground: 0 0% 40%;
 
-    --accent: 157 76% 24%;
+    --accent: 73 56% 49%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 0 0% 91%;
-    --input: 0 0% 91%;
-    --ring: 213 74% 37%;
+    --border: 38 30% 85%;
+    --input: 38 30% 85%;
+    --ring: 14 52% 50%;
 
     --radius: 0.5rem;
 
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-background: 40 100% 96%;
+    --sidebar-foreground: 0 0% 20%;
+    --sidebar-primary: 180 100% 15%;
     --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-accent: 38 50% 91%;
+    --sidebar-accent-foreground: 0 0% 20%;
+    --sidebar-border: 38 30% 85%;
+    --sidebar-ring: 14 52% 50%;
   }
 }
 
@@ -101,7 +101,7 @@
   }
   .btn-hover:hover {
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px hsl(var(--blue) / 0.3);
+    box-shadow: 0 4px 12px hsl(14 52% 50% / 0.3);
   }
 
   .btn-whatsapp-hover:hover {

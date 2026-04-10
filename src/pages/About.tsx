@@ -130,7 +130,7 @@ const AboutPage = () => (
           {industries.map((ind) => (
             <span
               key={ind}
-              className="bg-blue/10 text-blue px-4 py-2 rounded-full text-sm font-medium"
+              className="bg-teal/10 text-teal px-4 py-2 rounded-full text-sm font-medium"
             >
               {ind}
             </span>
