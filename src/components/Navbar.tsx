@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X } from "lucide-react";
+import { Menu, X, MessageCircle } from "lucide-react";
 import KNLogo from "./KNLogo";
 
 const navLinks = [
@@ -53,6 +53,15 @@ const Navbar = () => {
           >
             Book Consultation
           </a>
+          <a
+            href="https://wa.me/26773989514"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-whatsapp text-primary-foreground text-sm font-semibold px-4 py-2 rounded-md btn-hover flex items-center gap-1.5"
+          >
+            <MessageCircle size={15} />
+            WhatsApp
+          </a>
         </div>
 
         {/* Mobile hamburger */}
@@ -89,6 +98,15 @@ const Navbar = () => {
             className="block mt-3 bg-blue text-primary-foreground text-sm font-semibold px-5 py-2.5 rounded-md text-center"
           >
             Book Consultation
+          </a>
+          <a
+            href="https://wa.me/26773989514"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center justify-center gap-2 mt-2 bg-whatsapp text-primary-foreground text-sm font-semibold px-5 py-2.5 rounded-md text-center"
+          >
+            <MessageCircle size={15} />
+            Chat on WhatsApp
           </a>
         </div>
       )}

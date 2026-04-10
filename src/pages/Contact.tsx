@@ -42,50 +42,8 @@ const ContactPage = () => {
         </div>
       </PageHero>
 
-      {/* Quick actions */}
-      <section className="py-10">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="flex flex-wrap justify-center gap-4 mb-6">
-            <a href="https://calendly.com" target="_blank" rel="noopener noreferrer">
-              <Button variant="hero" size="lg">Book a Free Consultation</Button>
-            </a>
-            <a href="https://wa.me/26773989514" target="_blank" rel="noopener noreferrer">
-              <Button variant="whatsapp" size="lg">Chat on WhatsApp</Button>
-            </a>
-          </div>
-          <div className="flex justify-center gap-3">
-            {[
-              { icon: Linkedin, label: "LinkedIn", href: "#" },
-              { icon: Facebook, label: "Facebook", href: "#" },
-            ].map(({ icon: Icon, label, href }) => (
-              <a
-                key={label}
-                href={href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 px-4 py-2 rounded-full border border-custom text-sm text-muted-foreground hover:border-teal hover:text-teal transition-colors"
-              >
-                <Icon size={16} />
-                {label}
-              </a>
-            ))}
-            <a
-              href="#"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 px-4 py-2 rounded-full border border-custom text-sm text-muted-foreground hover:border-teal hover:text-teal transition-colors"
-            >
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-              </svg>
-              Twitter/X
-            </a>
-          </div>
-        </div>
-      </section>
-
       {/* Form + Info */}
-      <section className="pb-16">
+      <section className="py-16">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
             {/* Form */}
@@ -151,6 +109,39 @@ const ContactPage = () => {
                     {label}
                   </div>
                 ))}
+              </div>
+
+              <h3 className="font-bold text-lg mb-4">Follow Us</h3>
+              <div className="flex gap-3 mb-8">
+                <a
+                  href="#"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 px-4 py-2 rounded-md bg-[#0A66C2] text-white text-sm font-medium hover:opacity-90 transition-opacity"
+                >
+                  <Linkedin size={16} />
+                  LinkedIn
+                </a>
+                <a
+                  href="#"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 px-4 py-2 rounded-md bg-[#1877F2] text-white text-sm font-medium hover:opacity-90 transition-opacity"
+                >
+                  <Facebook size={16} />
+                  Facebook
+                </a>
+                <a
+                  href="#"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 px-4 py-2 rounded-md bg-[#14171A] text-white text-sm font-medium hover:opacity-90 transition-opacity"
+                >
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                  </svg>
+                  Twitter/X
+                </a>
               </div>
 
               <div className="bg-surface rounded-lg h-[210px] flex items-center justify-center text-muted-foreground text-sm">
