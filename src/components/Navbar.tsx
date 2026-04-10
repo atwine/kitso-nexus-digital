@@ -15,23 +15,23 @@ const Navbar = () => {
   const { pathname } = useLocation();
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-navy h-[68px]">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-navy h-[80px]">
       <div className="container mx-auto h-full flex items-center justify-between px-4 lg:px-8">
         {/* Logo */}
         <Link to="/" className="flex items-center gap-3">
-          <KNLogo size={36} />
+          <KNLogo size={44} />
           <div className="hidden sm:block">
-            <div className="text-primary-foreground font-bold text-sm leading-tight">
+            <div className="text-primary-foreground font-bold text-base leading-tight">
               Kitso Nexus Advisory
             </div>
-            <div className="text-teal text-[10px] font-semibold uppercase tracking-[0.12em] leading-tight">
+            <div className="text-teal text-[11px] font-semibold uppercase tracking-[0.14em] leading-tight mt-0.5">
               Architects of Intelligent Operations
             </div>
           </div>
         </Link>
 
         {/* Desktop nav */}
-        <div className="hidden lg:flex items-center gap-6">
+        <div className="hidden lg:flex items-center gap-8">
           {navLinks.map((link) => (
             <Link
               key={link.path}

@@ -58,7 +58,7 @@ const HomePage = () => (
     />
     {/* HERO */}
     <section
-      className="bg-navy hero-section pt-[68px] min-h-[420px] md:min-h-[500px] lg:min-h-[560px] relative overflow-hidden"
+      className="bg-navy hero-section pt-[80px] min-h-[420px] md:min-h-[500px] lg:min-h-[560px] relative overflow-hidden"
     >
       <div className="container mx-auto px-4 lg:px-8 py-12 md:py-[4.5rem] lg:py-20">
         <p className="section-label mb-4 fade-in">ERP Consulting · Southern Africa</p>
