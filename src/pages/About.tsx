@@ -1,19 +1,38 @@
-import { Target, Handshake, Lightbulb, ShieldCheck, RefreshCcw, Users, Factory, Truck, Heart, Briefcase, ShoppingCart, HardHat } from "lucide-react";
+import { Target, Handshake, Lightbulb, ShieldCheck, RefreshCcw, Users, Factory, Truck, Heart, Briefcase, ShoppingCart, HardHat, CheckCircle2, Linkedin } from "lucide-react";
 import PageHero from "@/components/PageHero";
 import SEO from "@/components/SEO";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 
 const team = [
   {
     initials: "AT",
+    image: "/about/atwine mugume.jpeg",
     name: "Mr. Mugume T Atwine",
     role: "Technical Lead",
     bio: "Specializes in ERP implementation, system customization, and technical architecture. Ensures every solution is built right.",
+    details: "Mugume has an extensive background in software engineering and system design, having successfully delivered complex ERP solutions. He focuses on bridging the gap between business requirements and technical realities to deliver systems that scale effortlessly.",
+    experience: [
+      "Over 10 years in software development and architecture",
+      "Lead architect on multiple large-scale enterprise resource planning projects",
+      "Expertise in modern web frameworks, database optimization, and cloud infrastructures",
+      "Passionate about creating scalable, secure, and maintainable systems"
+    ],
+    linkedin: "https://www.linkedin.com/in/mugume-twinamatsiko-atwine-msc-976ab12b/"
   },
   {
     initials: "MF",
+    image: "/about/fredric maripe.jpeg",
     name: "Mr. Fredrick Maripe",
     role: "Business Development",
     bio: "Leads client relationships, requirements gathering, and strategic advisory. Your first point of contact.",
+    details: "Fredrick is a seasoned business strategist with a deep understanding of the operational challenges faced by modern organizations. He ensures that every project aligns perfectly with the client's long-term overarching strategic objectives.",
+    experience: [
+      "Extensive experience in B2B consulting and enterprise advisory",
+      "Proven track record of driving digital transformation across various sectors",
+      "Expert in business process mapping, requirements gathering, and change management",
+      "Dedicated to fostering and maintaining long-lasting partnerships with clients"
+    ],
+    linkedin: "#"
   },
 ];
 
@@ -120,17 +139,86 @@ const AboutPage = () => (
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto">
           {team.map((member, i) => (
-            <div
-              key={i}
-              className="bg-card border border-custom rounded-lg p-6 transition-all duration-300 hover:shadow-md fade-in"
-            >
-              <div className="w-16 h-16 bg-navy rounded-full flex items-center justify-center text-primary-foreground font-bold text-lg mb-4">
-                {member.initials}
-              </div>
-              <h3 className="font-bold text-lg">{member.name}</h3>
-              <p className="text-teal text-sm font-medium mb-2">{member.role}</p>
-              <p className="text-muted-foreground text-sm leading-relaxed">{member.bio}</p>
-            </div>
+            <Dialog key={i}>
+              <DialogTrigger asChild>
+                <div
+                  className="bg-card border border-custom rounded-lg p-6 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 cursor-pointer fade-in text-left group"
+                >
+                  <div className="flex items-start justify-between">
+                    {member.image ? (
+                      <img 
+                        src={member.image} 
+                        alt={member.name} 
+                        className="w-20 h-20 rounded-full object-cover mb-4 border-2 border-transparent group-hover:border-teal/50 transition-colors"
+                      />
+                    ) : (
+                      <div className="w-20 h-20 bg-navy rounded-full flex items-center justify-center text-primary-foreground font-bold text-xl mb-4 group-hover:ring-2 ring-teal/50 transition-all">
+                        {member.initials}
+                      </div>
+                    )}
+                    <span className="text-xs font-medium px-2.5 py-1 bg-teal/10 text-teal rounded-full group-hover:bg-teal group-hover:text-white transition-colors">
+                      View Profile
+                    </span>
+                  </div>
+                  <h3 className="font-bold text-xl">{member.name}</h3>
+                  <p className="text-teal text-sm font-semibold mb-3">{member.role}</p>
+                  <p className="text-muted-foreground text-sm leading-relaxed line-clamp-3">{member.bio}</p>
+                </div>
+              </DialogTrigger>
+              <DialogContent className="sm:max-w-[550px] max-h-[90vh] overflow-y-auto w-[95vw]">
+                <DialogHeader className="flex flex-col items-center text-center gap-4 pb-4 border-b">
+                  {member.image ? (
+                    <img 
+                      src={member.image} 
+                      alt={member.name} 
+                      className="w-40 h-40 sm:w-48 sm:h-48 rounded-full object-cover shadow-lg border-4 border-white dark:border-navy"
+                    />
+                  ) : (
+                    <div className="w-40 h-40 sm:w-48 sm:h-48 bg-navy rounded-full shadow-lg flex items-center justify-center text-primary-foreground font-bold text-5xl">
+                      {member.initials}
+                    </div>
+                  )}
+                  <div className="flex flex-col items-center justify-center gap-1.5 mt-2">
+                    <DialogTitle className="text-2xl font-bold">{member.name}</DialogTitle>
+                    <div className="flex items-center gap-3">
+                      <DialogDescription className="text-teal font-semibold text-base m-0">
+                        {member.role}
+                      </DialogDescription>
+                      {member.linkedin && (
+                        <a 
+                          href={member.linkedin} 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="text-muted-foreground hover:text-[#0A66C2] transition-colors"
+                          title="LinkedIn Profile"
+                        >
+                          <Linkedin size={20} />
+                        </a>
+                      )}
+                    </div>
+                  </div>
+                </DialogHeader>
+                
+                <div className="py-2">
+                  <h4 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-2">About</h4>
+                  <p className="text-foreground/90 leading-relaxed text-sm">
+                    {member.details}
+                  </p>
+                </div>
+                
+                <div className="py-2">
+                  <h4 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-3">Key Experience</h4>
+                  <ul className="space-y-3">
+                    {member.experience.map((exp, idx) => (
+                      <li key={idx} className="flex items-start gap-3">
+                        <CheckCircle2 size={18} className="text-teal shrink-0 mt-0.5" />
+                        <span className="text-sm text-foreground/80 leading-relaxed">{exp}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </DialogContent>
+            </Dialog>
           ))}
         </div>
       </div>
@@ -181,3 +269,4 @@ const AboutPage = () => (
 );
 
 export default AboutPage;
+
