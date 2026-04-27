@@ -29,7 +29,7 @@ const ContactPage = () => {
         <div className="mt-4 grid grid-cols-1 sm:grid-cols-3 gap-3 text-sm text-primary-foreground/85 max-w-3xl">
           <div className="flex items-center gap-2 rounded-md px-3 py-2 border-2 border-primary-foreground">
             <Mail size={16} className="text-teal" />
-            <span>info@kitsonexus.com</span>
+            <a href="mailto:info@kitsonexus.com" className="hover:text-teal transition-colors">info@kitsonexus.com</a>
           </div>
           <div className="flex items-center gap-2 rounded-md px-3 py-2 border-2 border-primary-foreground">
             <Phone size={16} className="text-teal" />
@@ -98,15 +98,15 @@ const ContactPage = () => {
               <div className="space-y-4 mb-8">
                 {[
                   { icon: MapPin, label: "Gaborone, Botswana" },
-                  { icon: Mail, label: "info@kitsonexus.com" },
+                  { icon: Mail, label: "info@kitsonexus.com", href: "mailto:info@kitsonexus.com" },
                   { icon: Phone, label: "+267 73 989 514" },
                   { icon: Clock, label: "Monday–Friday, 8:00 AM – 5:00 PM (CAT)" },
-                ].map(({ icon: Icon, label }, i) => (
+                ].map(({ icon: Icon, label, href }, i) => (
                   <div key={i} className="flex items-center gap-3 text-sm text-muted-foreground">
                     <div className="w-9 h-9 bg-teal/10 rounded-lg flex items-center justify-center">
                       <Icon size={18} className="text-teal" />
                     </div>
-                    {label}
+                    {href ? <a href={href} className="hover:text-teal transition-colors">{label}</a> : label}
                   </div>
                 ))}
               </div>

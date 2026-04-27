@@ -46,7 +46,7 @@ const Navbar = () => {
             </Link>
           ))}
           <a
-            href="https://calendly.com"
+            href="https://cal.com/kitso-nexus-advisory-w4fk1j/30min"
             target="_blank"
             rel="noopener noreferrer"
             className="bg-blue text-primary-foreground text-sm font-semibold px-5 py-2 rounded-md btn-hover"
@@ -92,7 +92,7 @@ const Navbar = () => {
             </Link>
           ))}
           <a
-            href="https://calendly.com"
+            href="https://cal.com/kitso-nexus-advisory-w4fk1j/30min"
             target="_blank"
             rel="noopener noreferrer"
             className="block mt-3 bg-blue text-primary-foreground text-sm font-semibold px-5 py-2.5 rounded-md text-center"

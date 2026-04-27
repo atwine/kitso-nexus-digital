@@ -73,7 +73,7 @@ const HomePage = () => (
           We help businesses across Southern Africa streamline operations, modernize processes, and grow smarter — with expert ERP consulting and implementation built around how your business actually works.
         </p>
         <div className="flex flex-wrap gap-4 fade-in fade-in-delay-4">
-          <a href="https://calendly.com" target="_blank" rel="noopener noreferrer">
+          <a href="https://cal.com/kitso-nexus-advisory-w4fk1j/30min" target="_blank" rel="noopener noreferrer">
             <Button variant="hero" size="lg">Book a Free Consultation</Button>
           </a>
           <Link to="/services">
@@ -175,7 +175,7 @@ const HomePage = () => (
           Whether you're implementing a new ERP, fixing a broken one, or just exploring your options — we're here to help.
         </p>
         <div className="flex flex-wrap justify-center gap-4">
-          <a href="https://calendly.com" target="_blank" rel="noopener noreferrer">
+          <a href="https://cal.com/kitso-nexus-advisory-w4fk1j/30min" target="_blank" rel="noopener noreferrer">
             <Button variant="hero" size="lg">Book a Free Consultation</Button>
           </a>
           <a href="https://wa.me/26773989514" target="_blank" rel="noopener noreferrer">

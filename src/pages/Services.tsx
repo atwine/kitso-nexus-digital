@@ -134,7 +134,7 @@ const ServicesPage = () => (
         <p className="text-muted-foreground max-w-lg mx-auto mb-6">
           Book a free consultation and we'll help you figure out the best path forward.
         </p>
-        <a href="https://calendly.com" target="_blank" rel="noopener noreferrer">
+        <a href="https://cal.com/kitso-nexus-advisory-w4fk1j/30min" target="_blank" rel="noopener noreferrer">
           <Button variant="hero" size="lg">Book a Free Consultation</Button>
         </a>
       </div>

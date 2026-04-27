@@ -57,7 +57,7 @@ const Footer = () => (
             { label: "Services", path: "/services" },
             { label: "About Us", path: "/about" },
             { label: "Contact", path: "/contact" },
-            { label: "Book Consultation", path: "https://calendly.com" },
+            { label: "Book Consultation", path: "https://cal.com/kitso-nexus-advisory-w4fk1j/30min" },
           ].map((link) =>
             link.path.startsWith("http") ? (
               <a
@@ -86,7 +86,7 @@ const Footer = () => (
           <h4 className="font-semibold text-sm mb-4 text-primary-foreground">Contact</h4>
           <div className="space-y-2 text-sm text-primary-foreground/60">
             <p>📍 Gaborone, Botswana</p>
-            <p>✉️ info@kitsonexus.com</p>
+            <p>✉️ <a href="mailto:info@kitsonexus.com" className="hover:text-teal transition-colors">info@kitsonexus.com</a></p>
             <p>📞  +267 73 989 514</p>
             <p>🕐 Mon–Fri, 8:00 AM – 5:00 PM (CAT)</p>
           </div>
