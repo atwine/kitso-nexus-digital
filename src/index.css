@@ -130,6 +130,16 @@
   }
 }
 
+.group:hover .flip-inner {
+  transform: rotateY(180deg) scale(1.08);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.18);
+}
+
+@keyframes progressSweep {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+
 @layer components {
   .hero-section {
     background-color: hsl(var(--navy));

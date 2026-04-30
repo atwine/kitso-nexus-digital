@@ -1,4 +1,5 @@
 import { Target, Handshake, Lightbulb, ShieldCheck, RefreshCcw, Users, Factory, Truck, Heart, Briefcase, ShoppingCart, HardHat, CheckCircle2, Linkedin } from "lucide-react";
+import { useState, useEffect } from "react";
 import PageHero from "@/components/PageHero";
 import SEO from "@/components/SEO";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
@@ -78,7 +79,21 @@ const industries = [
   { icon: HardHat, name: "Construction", desc: "Job costing, project management, and subcontractor tracking.", color: "text-orange-400", bg: "bg-orange-400/10", border: "border-t-orange-400" },
 ];
 
-const AboutPage = () => (
+const CYCLE_MS = 4000;
+
+const AboutPage = () => {
+  const [activeIndustry, setActiveIndustry] = useState<number>(0);
+  const [paused, setPaused] = useState(false);
+
+  useEffect(() => {
+    if (paused) return;
+    const timer = setInterval(() => {
+      setActiveIndustry((prev) => (prev + 1) % industries.length);
+    }, CYCLE_MS);
+    return () => clearInterval(timer);
+  }, [paused]);
+
+  return (
   <main>
     <SEO
       title="About Us | Kitso Nexus Advisory — Gaborone, Botswana"
@@ -225,22 +240,51 @@ const AboutPage = () => (
     </section>
 
     {/* Values */}
-    <section className="py-16 md:py-20">
+    <section className="py-16 md:py-20 overflow-hidden">
       <div className="container mx-auto px-4 lg:px-8">
         <p className="section-label mb-2 text-center">Our Values</p>
-        <h2 className="text-2xl md:text-3xl font-bold text-center mb-10">
+        <h2 className="text-2xl md:text-3xl font-bold text-center mb-12">
           What Guides Us
         </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-          {values.map((v, i) => (
-            <div key={i} className="border border-custom rounded-lg p-6 border-t-4 border-t-teal fade-in hover:shadow-md transition-shadow">
-              <div className="w-10 h-10 bg-teal/10 rounded-lg flex items-center justify-center mb-4">
-                <v.icon size={20} className="text-teal" />
+        <div className="relative flex flex-col gap-6">
+          {/* Vertical timeline line */}
+          <div className="hidden md:block absolute left-6 top-0 bottom-0 w-0.5 bg-border z-0" />
+
+          {values.map((v, i) => {
+            const isEven = i % 2 === 0;
+            return (
+              <div key={i} className={`relative flex items-start gap-6 fade-in ${
+                isEven ? "md:pr-0" : "md:pr-[18%]"
+              }`}>
+                {/* Timeline node */}
+                <div className="relative z-10 shrink-0 flex flex-col items-center mt-5">
+                  <div className="w-12 h-12 rounded-full bg-navy border-4 border-teal flex items-center justify-center">
+                    <span className="text-teal text-xs font-black">{String(i + 1).padStart(2, "0")}</span>
+                  </div>
+                </div>
+
+                {/* Card */}
+                <div className="relative flex-1 bg-card border border-custom rounded-2xl p-6 md:p-8 overflow-hidden">
+                  {/* Giant faded number — bleeds from right */}
+                  <span className="pointer-events-none select-none absolute -right-2 -bottom-4 font-black leading-none text-[120px] md:text-[150px] opacity-[0.05] text-foreground">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+
+                  <div className="relative z-10 flex items-start gap-4">
+                    <div className={`w-10 h-10 rounded-lg flex items-center justify-center shrink-0 ${
+                      isEven ? "bg-teal/10" : "bg-navy/10"
+                    }`}>
+                      <v.icon size={20} className={isEven ? "text-teal" : "text-navy"} />
+                    </div>
+                    <div>
+                      <h3 className="font-black text-xl md:text-2xl mb-2">{v.title}</h3>
+                      <p className="text-muted-foreground leading-relaxed">{v.desc}</p>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <h3 className="font-bold text-lg mb-2">{v.title}</h3>
-              <p className="text-muted-foreground text-sm leading-relaxed text-justify">{v.desc}</p>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>
@@ -252,21 +296,69 @@ const AboutPage = () => (
         <h2 className="text-2xl md:text-3xl font-bold text-center mb-10">
           Across Sectors
         </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+        {/* Pill selector row */}
+        <div className="flex flex-wrap justify-center gap-3 mb-8">
           {industries.map((ind, i) => (
-            <div key={i} className={`border border-custom rounded-lg p-6 border-t-4 ${ind.border} fade-in hover:shadow-md transition-shadow`}>
-              <div className={`w-10 h-10 ${ind.bg} rounded-lg flex items-center justify-center mb-4`}>
-                <ind.icon size={20} className={ind.color} />
-              </div>
-              <h3 className="font-bold text-lg mb-2">{ind.name}</h3>
-              <p className="text-muted-foreground text-sm leading-relaxed text-justify">{ind.desc}</p>
-            </div>
+            <button
+              key={i}
+              onClick={() => { setActiveIndustry(i); setPaused(true); }}
+              className={`relative flex items-center gap-2 px-5 py-2.5 rounded-full border-2 font-semibold text-sm transition-all duration-200 overflow-hidden ${
+                activeIndustry === i
+                  ? `bg-navy text-white border-navy`
+                  : `bg-card border-custom hover:border-teal text-foreground`
+              }`}
+            >
+              {/* Progress sweep on active pill */}
+              {activeIndustry === i && !paused && (
+                <span
+                  className="absolute inset-0 bg-white/10 origin-left"
+                  style={{ animation: `progressSweep ${CYCLE_MS}ms linear forwards` }}
+                />
+              )}
+              <ind.icon size={15} className={activeIndustry === i ? "text-white" : ind.color} />
+              <span className="relative z-10">{ind.name}</span>
+            </button>
           ))}
         </div>
+        {/* Resume auto-cycle button when paused */}
+        {paused && (
+          <div className="flex justify-center mb-6">
+            <button
+              onClick={() => setPaused(false)}
+              className="text-xs text-muted-foreground hover:text-teal transition-colors underline underline-offset-2"
+            >
+              Resume auto-cycle
+            </button>
+          </div>
+        )}
+
+        {/* Expanded detail card */}
+        {(() => {
+          const ind = industries[activeIndustry];
+          return (
+            <div className={`relative overflow-hidden rounded-2xl border border-custom bg-card p-10 md:p-14 flex flex-col md:flex-row items-center gap-10 fade-in`}>
+              {/* Giant faded number */}
+              <span className="pointer-events-none select-none absolute right-6 bottom-0 font-black leading-none text-[160px] opacity-[0.04] text-foreground">
+                {String(activeIndustry + 1).padStart(2, "0")}
+              </span>
+              {/* Icon */}
+              <div className={`w-24 h-24 ${ind.bg} rounded-3xl flex items-center justify-center shrink-0`}>
+                <ind.icon size={44} className={ind.color} />
+              </div>
+              {/* Content */}
+              <div className="relative z-10">
+                <p className={`text-xs font-semibold uppercase tracking-widest ${ind.color} mb-2`}>Industry Focus</p>
+                <h3 className="font-black text-2xl md:text-3xl mb-3">{ind.name}</h3>
+                <p className="text-muted-foreground leading-relaxed text-base max-w-xl">{ind.desc}</p>
+              </div>
+            </div>
+          );
+        })()}
       </div>
     </section>
   </main>
-);
+  );
+};
 
 export default AboutPage;
 
