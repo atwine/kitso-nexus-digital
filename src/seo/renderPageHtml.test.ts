@@ -1,7 +1,7 @@
-import { readFileSync } from "fs";
+import { readdirSync, readFileSync } from "fs";
 import { resolve } from "path";
 import { describe, it, expect } from "vitest";
-import { PAGE_META, PAGE_PATHS, pageUrl } from "./pageMeta";
+import { PAGE_META, PAGE_PATHS, PagePath, pageUrl } from "./pageMeta";
 import { renderPageHtml } from "./renderPageHtml";
 
 const root = resolve(__dirname, "../..");
@@ -30,6 +30,15 @@ describe("renderPageHtml", () => {
   it("fails loudly when index.html is missing a tag it should rewrite", () => {
     const broken = template.replace(/<link rel="canonical"[^>]*>/, "");
     expect(() => renderPageHtml(broken, "/about")).toThrow(/canonical/);
+  });
+
+  // A public/about/ folder next to the built about.html can make the host
+  // serve the folder (then the SPA fallback) instead of the page's own HTML.
+  it("has no public/ folder named after a page", () => {
+    const folders = readdirSync(resolve(root, "public"), { withFileTypes: true })
+      .filter((entry) => entry.isDirectory())
+      .map((entry) => `/${entry.name}`);
+    expect(folders.filter((folder) => routes.includes(folder as PagePath))).toEqual([]);
   });
 
   it("covers exactly the pages listed in the sitemap", () => {

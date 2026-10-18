@@ -7,7 +7,7 @@ import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, Di
 const team = [
   {
     initials: "AT",
-    image: "/about/atwine mugume.jpeg",
+    image: "/images/team/atwine mugume.jpeg",
     name: "Mr. Mugume T Atwine",
     role: "Technical Lead",
     bio: "Specializes in ERP implementation, system customization, and technical architecture. Ensures every solution is built right.",
@@ -22,7 +22,7 @@ const team = [
   },
   {
     initials: "MF",
-    image: "/about/fredric maripe.jpeg",
+    image: "/images/team/fredric maripe.jpeg",
     name: "Mr. Fredrick Maripe",
     role: "Business Development",
     bio: "Leads client relationships, requirements gathering, and strategic advisory. Your first point of contact.",
