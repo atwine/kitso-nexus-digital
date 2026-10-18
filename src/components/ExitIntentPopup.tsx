@@ -1,5 +1,5 @@
 import { useEffect, useState, useCallback, useRef } from "react";
-import { X, Calendar, MessageCircle, Twitter } from "lucide-react";
+import { X, Calendar, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const IDLE_TIMEOUT_MS = 30_000; // 30 seconds of inactivity
@@ -67,7 +67,7 @@ const ExitIntentPopup = () => {
             Let's stay connected
           </h3>
           <p className="text-muted-foreground text-sm mb-6">
-            Book a free consultation, chat with us on WhatsApp, or follow us on X — we'd love to help.
+            Book a free consultation or chat with us on WhatsApp — we'd love to help.
           </p>
 
           <div className="flex flex-col gap-3">
@@ -94,19 +94,6 @@ const ExitIntentPopup = () => {
               <Button variant="whatsapp" size="lg" className="w-full gap-2">
                 <MessageCircle size={18} />
                 Chat on WhatsApp
-              </Button>
-            </a>
-
-            {/* X / Twitter */}
-            <a
-              href="https://x.com/kitsonexus"
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={close}
-            >
-              <Button variant="outline" size="lg" className="w-full gap-2">
-                <Twitter size={18} />
-                Follow us on X
               </Button>
             </a>
           </div>

@@ -16,11 +16,7 @@ const ContactPage = () => {
 
   return (
     <main>
-      <SEO
-        title="Contact Us | Kitso Nexus Advisory"
-        description="Get in touch with Kitso Nexus Advisory. Book a free consultation or send us a message. Based in Gaborone, Botswana."
-        path="/contact"
-      />
+      <SEO path="/contact" />
       <PageHero
         label="Contact"
         title="Get in touch"
@@ -114,7 +110,7 @@ const ContactPage = () => {
               <h3 className="font-bold text-lg mb-4">Follow Us</h3>
               <div className="flex gap-3 mb-8">
                 <a
-                  href="#"
+                  href="https://www.linkedin.com/company/kitso-nexus-advisory/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-2 px-4 py-2 rounded-md bg-[#0A66C2] text-white text-sm font-medium hover:opacity-90 transition-opacity"
@@ -123,7 +119,7 @@ const ContactPage = () => {
                   LinkedIn
                 </a>
                 <a
-                  href="#"
+                  href="https://www.facebook.com/profile.php?id=61589163866211"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-2 px-4 py-2 rounded-md bg-[#1877F2] text-white text-sm font-medium hover:opacity-90 transition-opacity"
@@ -131,22 +127,15 @@ const ContactPage = () => {
                   <Facebook size={16} />
                   Facebook
                 </a>
-                <a
-                  href="#"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 px-4 py-2 rounded-md bg-[#14171A] text-white text-sm font-medium hover:opacity-90 transition-opacity"
-                >
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-                  </svg>
-                  Twitter/X
-                </a>
               </div>
 
-              <div className="bg-surface rounded-lg h-[210px] flex items-center justify-center text-muted-foreground text-sm">
-                Google Maps embed — Gaborone
-              </div>
+              <iframe
+                title="Map of Gaborone, Botswana"
+                src="https://www.google.com/maps?q=Gaborone,Botswana&output=embed"
+                className="w-full h-[210px] rounded-lg border-0 bg-surface"
+                loading="lazy"
+                allowFullScreen
+              />
             </div>
           </div>
         </div>

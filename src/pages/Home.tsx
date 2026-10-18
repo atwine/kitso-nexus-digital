@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { useState, useEffect } from "react";
 import SEO from "@/components/SEO";
-import Reviews from "@/components/Reviews";
 
 const services = [
   {
@@ -112,11 +111,7 @@ const HomePage = () => {
 
   return (
   <main>
-    <SEO
-      title="Kitso Nexus Advisory | ERP Consulting & Implementation in Botswana"
-      description="Kitso Nexus Advisory helps businesses in Southern Africa streamline operations with expert ERP consulting and implementation. Based in Gaborone, Botswana."
-      path="/"
-    />
+    <SEO path="/" />
     {/* HERO */}
     <section
       className="bg-navy hero-section pt-[80px] min-h-[420px] md:min-h-[500px] lg:min-h-[560px] relative overflow-hidden"
@@ -314,8 +309,6 @@ const HomePage = () => {
         </div>
       </div>
     </section>
-
-    <Reviews />
 
     {/* CTA BAND */}
     <section className="bg-surface py-16">

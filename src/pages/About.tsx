@@ -95,11 +95,7 @@ const AboutPage = () => {
 
   return (
   <main>
-    <SEO
-      title="About Us | Kitso Nexus Advisory — Gaborone, Botswana"
-      description="Learn about Kitso Nexus Advisory — a Botswana-based ERP consultancy helping businesses work smarter through intelligent operations."
-      path="/about"
-    />
+    <SEO path="/about" />
     <PageHero
       label="Who We Are"
       title="About Kitso Nexus Advisory"

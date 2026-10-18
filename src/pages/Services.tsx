@@ -63,11 +63,7 @@ const ServicesPage = () => {
 
   return (
   <main>
-    <SEO
-      title="Our Services | ERP Implementation, Training & Support | Kitso Nexus"
-      description="Explore our ERP services: implementation, customization, training, data migration, and ongoing support retainers across Southern Africa."
-      path="/services"
-    />
+    <SEO path="/services" />
     <PageHero
       label="Our Services"
       title="What we do"
