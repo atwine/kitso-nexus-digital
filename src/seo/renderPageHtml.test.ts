@@ -1,12 +1,12 @@
 import { readFileSync } from "fs";
 import { resolve } from "path";
 import { describe, it, expect } from "vitest";
-import { PAGE_META, PagePath, pageUrl } from "./pageMeta";
+import { PAGE_META, PAGE_PATHS, pageUrl } from "./pageMeta";
 import { renderPageHtml } from "./renderPageHtml";
 
 const root = resolve(__dirname, "../..");
 const template = readFileSync(resolve(root, "index.html"), "utf8");
-const routes = Object.keys(PAGE_META) as PagePath[];
+const routes = PAGE_PATHS;
 
 const headOf = (html: string) => new DOMParser().parseFromString(html, "text/html").head;
 const attr = (head: HTMLHeadElement, selector: string, name: string) =>

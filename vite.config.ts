@@ -3,7 +3,7 @@ import react from "@vitejs/plugin-react-swc";
 import path from "path";
 import fs from "fs";
 import { componentTagger } from "lovable-tagger";
-import { PAGE_META, PagePath } from "./src/seo/pageMeta";
+import { PAGE_PATHS } from "./src/seo/pageMeta";
 import { renderPageHtml } from "./src/seo/renderPageHtml";
 
 // Writes dist/<page>.html for each route with that page's title/description,
@@ -19,8 +19,9 @@ const pageMetaHtml = (): Plugin => {
     },
     closeBundle() {
       const indexPath = path.join(outDir, "index.html");
+      if (!fs.existsSync(indexPath)) return; // build failed earlier; let that error surface
       const template = fs.readFileSync(indexPath, "utf8");
-      for (const route of Object.keys(PAGE_META) as PagePath[]) {
+      for (const route of PAGE_PATHS) {
         const file = route === "/" ? indexPath : path.join(outDir, `${route.slice(1)}.html`);
         fs.writeFileSync(file, renderPageHtml(template, route));
       }

@@ -36,4 +36,6 @@ export const PAGE_META = {
 
 export type PagePath = keyof typeof PAGE_META;
 
-export const pageUrl = (path: PagePath) => (path === "/" ? `${SITE_URL}/` : `${SITE_URL}${path}`);
+export const PAGE_PATHS = Object.keys(PAGE_META) as PagePath[];
+
+export const pageUrl = (path: PagePath) => `${SITE_URL}${path}`;
