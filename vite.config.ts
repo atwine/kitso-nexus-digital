@@ -15,7 +15,8 @@ const pageMetaHtml = (): Plugin => {
     name: "page-meta-html",
     apply: "build",
     configResolved(config) {
-      outDir = path.resolve(config.root, config.build.outDir);
+      // Both values are the repo's own Vite config, not user input.
+      outDir = path.resolve(config.root, config.build.outDir); // nosemgrep: javascript.lang.security.audit.path-traversal.path-join-resolve-traversal.path-join-resolve-traversal
     },
     closeBundle() {
       const indexPath = path.join(outDir, "index.html");
