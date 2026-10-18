@@ -1,20 +1,15 @@
 import { useEffect } from "react";
+import { OG_IMAGE, PAGE_META, PagePath, pageUrl } from "@/seo/pageMeta";
 
 interface SEOProps {
-  title: string;
-  description: string;
-  path: string;
+  path: PagePath;
 }
 
-const DEFAULT_SITE_URL =
-  typeof window !== "undefined" && window.location && window.location.origin
-    ? window.location.origin
-    : "https://www.kitsonexus.com";
-const SITE_URL = (import.meta as any).env?.VITE_SITE_URL || DEFAULT_SITE_URL;
-const OG_IMAGE = `${SITE_URL}/logo.jpeg`;
-
-const SEO = ({ title, description, path }: SEOProps) => {
-  const url = `${SITE_URL}${path}`;
+// Keeps head tags in sync during client-side navigation. The first page load
+// already has the right tags, written into per-page HTML at build time.
+const SEO = ({ path }: SEOProps) => {
+  const { title, description } = PAGE_META[path];
+  const url = pageUrl(path);
 
   useEffect(() => {
     document.title = title;
@@ -35,6 +30,8 @@ const SEO = ({ title, description, path }: SEOProps) => {
     setMeta("property", "og:url", url);
     setMeta("property", "og:type", "website");
     setMeta("property", "og:image", OG_IMAGE);
+    setMeta("name", "twitter:title", title);
+    setMeta("name", "twitter:description", description);
 
     let canonical = document.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;
     if (!canonical) {
