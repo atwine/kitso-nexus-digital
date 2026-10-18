@@ -1,8 +1,250 @@
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap')
+layer(base);
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
+
+@utility container {
+  margin-inline: auto;
+  padding-inline: 2rem;
+  @media (width >= --theme(--breakpoint-sm)) {
+    max-width: none;
+  }
+  @media (width >= 1400px) {
+    max-width: 1400px;
+  }
+}
+
+@theme {
+  --font-sans: 'Plus Jakarta Sans', sans-serif;
+
+  --color-navy: hsl(var(--navy));
+  --color-teal: hsl(var(--teal));
+  --color-blue: hsl(var(--blue));
+  --color-whatsapp: hsl(var(--whatsapp));
+  --color-surface: hsl(var(--surface));
+  --color-border-custom: hsl(var(--border-custom));
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+
+  --color-sidebar: hsl(var(--sidebar-background));
+  --color-sidebar-foreground: hsl(var(--sidebar-foreground));
+  --color-sidebar-primary: hsl(var(--sidebar-primary));
+  --color-sidebar-primary-foreground: hsl(var(--sidebar-primary-foreground));
+  --color-sidebar-accent: hsl(var(--sidebar-accent));
+  --color-sidebar-accent-foreground: hsl(var(--sidebar-accent-foreground));
+  --color-sidebar-border: hsl(var(--sidebar-border));
+  --color-sidebar-ring: hsl(var(--sidebar-ring));
+
+  /* v3 values for the stock palette colours in use; v4 redrew the palette. */
+  --color-amber-500: #f59e0b;
+  --color-orange-400: #fb923c;
+  --color-rose-400: #fb7185;
+  --color-violet-400: #a78bfa;
+  --color-red-50: #fef2f2;
+  --color-red-300: #fca5a5;
+  --color-red-400: #f87171;
+
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
+
+  @keyframes accordion-down {
+    from {
+      height: 0;
+    }
+    to {
+      height: var(--radix-accordion-content-height);
+    }
+  }
+  @keyframes accordion-up {
+    from {
+      height: var(--radix-accordion-content-height);
+    }
+    to {
+      height: 0;
+    }
+  }
+}
+
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+
+  /* Tailwind v4 dropped cursor: pointer on buttons; keep v3's behaviour. */
+  button:not(:disabled),
+  [role='button']:not(:disabled) {
+    cursor: pointer;
+  }
+}
+
+@utility text-navy {
+  color: hsl(var(--navy));
+}
+
+@utility bg-navy {
+  background-color: hsl(var(--navy));
+}
+
+@utility text-teal {
+  color: hsl(var(--teal));
+}
+
+@utility bg-teal {
+  background-color: hsl(var(--teal));
+}
+
+@utility text-blue {
+  color: hsl(var(--blue));
+}
+
+@utility bg-blue {
+  background-color: hsl(var(--blue));
+}
+
+@utility bg-surface {
+  background-color: hsl(var(--surface));
+}
+
+@utility border-custom {
+  border-color: hsl(var(--border-custom));
+}
+
+@utility bg-whatsapp {
+  background-color: hsl(var(--whatsapp));
+}
+
+@utility text-whatsapp {
+  color: hsl(var(--whatsapp));
+}
+
+@utility section-label {
+  @apply text-teal text-xs font-semibold uppercase tracking-[0.15em];
+}
+
+@utility card-service {
+  @apply bg-card border border-custom rounded-lg p-6 transition-all duration-300;
+  &:hover {
+    @apply border-teal shadow-md;
+    transform: translateY(-3px);
+  }
+}
+
+@utility btn-hover {
+  @apply transition-all duration-200;
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px hsl(14 52% 50% / 0.3);
+  }
+}
+
+@utility btn-whatsapp-hover {
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px hsl(var(--whatsapp) / 0.3);
+  }
+}
+
+@utility fade-in {
+  animation: fadeInUp 0.6s ease-out both;
+}
+
+@utility fade-in-delay-1 {
+  animation-delay: 0.1s;
+}
+
+@utility fade-in-delay-2 {
+  animation-delay: 0.2s;
+}
+
+@utility fade-in-delay-3 {
+  animation-delay: 0.3s;
+}
+
+@utility fade-in-delay-4 {
+  animation-delay: 0.4s;
+}
+
+@utility fade-in-delay-5 {
+  animation-delay: 0.5s;
+}
+
+@utility hero-section {
+  background-color: hsl(var(--navy));
+  background-image:
+    radial-gradient(
+      ellipse 600px 400px at 80% 20%,
+      hsl(73 56% 49% / 0.15),
+      transparent
+    ),
+    radial-gradient(
+      ellipse 500px 400px at 20% 80%,
+      hsl(14 52% 50% / 0.12),
+      transparent
+    ),
+    url('/hero/abstract-tech-16x9.webp');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  @media (max-width: 1024px) {
+    background-image:
+      radial-gradient(
+        ellipse 600px 400px at 80% 20%,
+        hsl(73 56% 49% / 0.15),
+        transparent
+      ),
+      radial-gradient(
+        ellipse 500px 400px at 20% 80%,
+        hsl(14 52% 50% / 0.12),
+        transparent
+      ),
+      url('/hero/abstract-tech-4x3.webp');
+  }
+}
 
 @layer base {
   :root {
@@ -71,93 +313,28 @@
 }
 
 @layer utilities {
-  .text-navy { color: hsl(var(--navy)); }
-  .bg-navy { background-color: hsl(var(--navy)); }
-  .text-teal { color: hsl(var(--teal)); }
-  .bg-teal { background-color: hsl(var(--teal)); }
-  .text-blue { color: hsl(var(--blue)); }
-  .bg-blue { background-color: hsl(var(--blue)); }
-  .bg-surface { background-color: hsl(var(--surface)); }
-  .border-custom { border-color: hsl(var(--border-custom)); }
-  .bg-whatsapp { background-color: hsl(var(--whatsapp)); }
-  .text-whatsapp { color: hsl(var(--whatsapp)); }
-}
-
-@layer components {
-  .section-label {
-    @apply text-teal text-xs font-semibold uppercase tracking-[0.15em];
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 
-  .card-service {
-    @apply bg-card border border-custom rounded-lg p-6 transition-all duration-300;
-  }
-  .card-service:hover {
-    @apply border-teal shadow-md;
-    transform: translateY(-3px);
+  .group:hover .flip-inner {
+    transform: rotateY(180deg) scale(1.08);
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.18);
   }
 
-  .btn-hover {
-    @apply transition-all duration-200;
-  }
-  .btn-hover:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px hsl(14 52% 50% / 0.3);
-  }
-
-  .btn-whatsapp-hover:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px hsl(var(--whatsapp) / 0.3);
-  }
-
-  .fade-in {
-    animation: fadeInUp 0.6s ease-out both;
-  }
-  .fade-in-delay-1 { animation-delay: 0.1s; }
-  .fade-in-delay-2 { animation-delay: 0.2s; }
-  .fade-in-delay-3 { animation-delay: 0.3s; }
-  .fade-in-delay-4 { animation-delay: 0.4s; }
-  .fade-in-delay-5 { animation-delay: 0.5s; }
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.group:hover .flip-inner {
-  transform: rotateY(180deg) scale(1.08);
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.18);
-}
-
-@keyframes progressSweep {
-  from { transform: scaleX(0); }
-  to   { transform: scaleX(1); }
-}
-
-@layer components {
-  .hero-section {
-    background-color: hsl(var(--navy));
-    background-image:
-      radial-gradient(ellipse 600px 400px at 80% 20%, hsl(73 56% 49% / 0.15), transparent),
-      radial-gradient(ellipse 500px 400px at 20% 80%, hsl(14 52% 50% / 0.12), transparent),
-      url('/hero/abstract-tech-16x9.webp');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-  }
-
-  @media (max-width: 1024px) {
-    .hero-section {
-      background-image:
-        radial-gradient(ellipse 600px 400px at 80% 20%, hsl(73 56% 49% / 0.15), transparent),
-        radial-gradient(ellipse 500px 400px at 20% 80%, hsl(14 52% 50% / 0.12), transparent),
-        url('/hero/abstract-tech-4x3.webp');
+  @keyframes progressSweep {
+    from {
+      transform: scaleX(0);
+    }
+    to {
+      transform: scaleX(1);
     }
   }
 }

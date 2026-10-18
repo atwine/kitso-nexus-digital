@@ -123,18 +123,18 @@ const AboutPage = () => {
         <p className="section-label mb-3">Our Story</p>
         <h2 className="text-2xl md:text-3xl font-bold mb-6">Built on Belief, Driven by Knowledge</h2>
         <div className="space-y-4 text-muted-foreground leading-relaxed text-justify">
-          <p className="text-lg md:text-xl leading-relaxed text-foreground/80">
+          <p className="text-lg md:text-xl leading-relaxed md:leading-7 text-foreground/80">
             Kitso Nexus Advisory was founded with a simple belief: that businesses in <strong className="text-teal">Southern Africa</strong> deserve the same caliber of operational technology and consulting that's available anywhere in the world. We saw too many organizations struggling with manual processes, disconnected systems, and ERP implementations that didn't fit their reality.
           </p>
           <p>
             So we built a consultancy that puts <strong>understanding first</strong>. We don't lead with software — we lead with listening. Every engagement starts with learning how your business actually works, then designing solutions that fit your people, your processes, and your goals.
           </p>
 
-          <blockquote className="border-l-4 border-teal bg-teal/5 pl-6 pr-4 py-4 my-6 rounded-r-lg text-foreground text-lg italic">
+          <blockquote className="border-l-4 border-teal bg-teal/5 pl-6 pr-4 py-4 my-4 rounded-r-lg text-foreground text-lg italic">
             "Kitso" means <strong>knowledge</strong> in Setswana. We bring that knowledge to every engagement — bridging the gap between technology and the people who use it every day.
           </blockquote>
 
-          <p className="text-lg md:text-xl leading-relaxed text-foreground/80">
+          <p className="text-lg md:text-xl leading-relaxed md:leading-7 text-foreground/80">
             Based in <strong>Gaborone, Botswana</strong>, we serve clients across multiple industries and pride ourselves on building <strong className="text-teal">long-term partnerships</strong> — not one-off projects. When you work with Kitso Nexus, you get a team that stays with you well beyond go-live.
           </p>
         </div>

@@ -49,7 +49,7 @@ const ExitIntentPopup = () => {
   if (!visible) return null;
 
   return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/50 backdrop-blur-sm animate-in fade-in duration-300">
+    <div className="fixed inset-0 z-100 flex items-center justify-center bg-black/50 backdrop-blur-xs animate-in fade-in duration-300">
       <div className="relative mx-4 w-full max-w-md rounded-xl bg-card p-8 shadow-2xl fade-in">
         {/* Close button */}
         <button
