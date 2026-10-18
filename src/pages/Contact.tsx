@@ -51,7 +51,7 @@ const ContactPage = () => {
                   required
                   value={form.name}
                   onChange={(e) => setForm({ ...form, name: e.target.value })}
-                  className="w-full px-4 py-2.5 rounded-md border border-custom bg-card text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-blue"
+                  className="w-full px-4 py-2.5 rounded-md border border-custom bg-card text-foreground text-sm focus:outline-hidden focus:ring-2 focus:ring-blue"
                 />
               </div>
               <div>
@@ -61,7 +61,7 @@ const ContactPage = () => {
                   required
                   value={form.email}
                   onChange={(e) => setForm({ ...form, email: e.target.value })}
-                  className="w-full px-4 py-2.5 rounded-md border border-custom bg-card text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-blue"
+                  className="w-full px-4 py-2.5 rounded-md border border-custom bg-card text-foreground text-sm focus:outline-hidden focus:ring-2 focus:ring-blue"
                 />
               </div>
               <div>
@@ -70,7 +70,7 @@ const ContactPage = () => {
                   type="text"
                   value={form.company}
                   onChange={(e) => setForm({ ...form, company: e.target.value })}
-                  className="w-full px-4 py-2.5 rounded-md border border-custom bg-card text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-blue"
+                  className="w-full px-4 py-2.5 rounded-md border border-custom bg-card text-foreground text-sm focus:outline-hidden focus:ring-2 focus:ring-blue"
                 />
               </div>
               <div>
@@ -80,7 +80,7 @@ const ContactPage = () => {
                   rows={5}
                   value={form.message}
                   onChange={(e) => setForm({ ...form, message: e.target.value })}
-                  className="w-full px-4 py-2.5 rounded-md border border-custom bg-card text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-blue resize-none"
+                  className="w-full px-4 py-2.5 rounded-md border border-custom bg-card text-foreground text-sm focus:outline-hidden focus:ring-2 focus:ring-blue resize-none"
                 />
               </div>
               <Button variant="hero" size="lg" type="submit" className="w-full">

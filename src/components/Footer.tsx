@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link } from "react-router";
 import { Linkedin, Facebook, MessageCircle } from "lucide-react";
 import KNLogo from "./KNLogo";
 

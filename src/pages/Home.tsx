@@ -1,5 +1,5 @@
 import { Settings, Wrench, Users, ClipboardList, Database, HeadphonesIcon } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link } from "react-router";
 import { Button } from "@/components/ui/button";
 import { useState, useEffect } from "react";
 import SEO from "@/components/SEO";
@@ -116,7 +116,7 @@ const HomePage = () => {
     <section
       className="bg-navy hero-section pt-[80px] min-h-[420px] md:min-h-[500px] lg:min-h-[560px] relative overflow-hidden"
     >
-      <div className="container mx-auto px-4 lg:px-8 py-12 md:py-[4.5rem] lg:py-20">
+      <div className="container mx-auto px-4 lg:px-8 py-12 md:py-18 lg:py-20">
         <p className="section-label mb-4 fade-in">ERP Consulting · Southern Africa</p>
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-primary-foreground mb-3 fade-in fade-in-delay-1">
           Kitso Nexus Advisory
