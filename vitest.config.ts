@@ -5,10 +5,28 @@ import path from "path";
 export default defineConfig({
   plugins: [react()],
   test: {
-    environment: "jsdom",
     globals: true,
-    setupFiles: ["./src/test/setup.ts"],
-    include: ["src/**/*.{test,spec}.{ts,tsx}"],
+    projects: [
+      {
+        // The website: runs in a simulated browser.
+        extends: true,
+        test: {
+          name: "site",
+          environment: "jsdom",
+          setupFiles: ["./src/test/setup.ts"],
+          include: ["src/**/*.{test,spec}.{ts,tsx}"],
+        },
+      },
+      {
+        // Server functions and their helpers: run in plain Node, no browser.
+        extends: true,
+        test: {
+          name: "server",
+          environment: "node",
+          include: ["netlify/**/*.test.ts"],
+        },
+      },
+    ],
   },
   resolve: {
     alias: { "@": path.resolve(__dirname, "./src") },

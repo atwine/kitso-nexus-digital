@@ -1,92 +1,48 @@
 import { Link } from "react-router";
-import { Linkedin, Facebook, MessageCircle } from "lucide-react";
-import KNLogo from "./KNLogo";
+import { useConsent } from "@/hooks/use-consent";
+import { consent } from "@/lib/consent";
+import { EMAIL, PHONE_DISPLAY, PHONE_TEL } from "@/lib/contact";
+import { FACEBOOK_URL, LINKEDIN_URL } from "@/lib/social";
 
-const Footer = () => (
-  <footer className="bg-navy text-primary-foreground pt-16 pb-6">
-    <div className="container mx-auto px-4 lg:px-8">
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-12">
-        {/* Col 1 */}
-        <div>
-          <div className="flex items-center gap-3 mb-3">
-            <KNLogo size={32} />
-            <div>
-              <div className="font-bold text-sm">Kitso Nexus Advisory</div>
-              <div className="text-teal text-[10px] font-semibold uppercase tracking-[0.12em] italic">
-                Architects of Intelligent Operations
-              </div>
-            </div>
-          </div>
-          <p className="text-primary-foreground/60 text-sm leading-relaxed mb-4">
-            Expert ERP consulting for businesses across Southern Africa. We help you streamline operations, modernize processes, and grow smarter.
-          </p>
-          <div className="flex gap-2">
-            {[
-              { icon: Linkedin, href: "https://www.linkedin.com/company/kitso-nexus-advisory/" },
-              { icon: Facebook, href: "https://www.facebook.com/profile.php?id=61589163866211" },
-              { icon: MessageCircle, href: "https://wa.me/26773989514" },
-            ].map(({ icon: Icon, href }, i) => (
-              <a
-                key={i}
-                href={href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-9 h-9 rounded flex items-center justify-center bg-primary-foreground/10 transition-colors hover:bg-teal"
-              >
-                <Icon size={16} />
-              </a>
-            ))}
-          </div>
-        </div>
+const link = "underline-offset-4 hover:underline";
+const dot = <span aria-hidden="true">&nbsp;·&nbsp;</span>;
 
-        {/* Col 2 */}
-        <div>
-          <h4 className="font-semibold text-sm mb-4 text-primary-foreground">Quick Links</h4>
-          {[
-            { label: "Services", path: "/services" },
-            { label: "About Us", path: "/about" },
-            { label: "Contact", path: "/contact" },
-            { label: "Book Consultation", path: "https://cal.com/kitso-nexus-advisory-w4fk1j/30min" },
-          ].map((link) =>
-            link.path.startsWith("http") ? (
-              <a
-                key={link.label}
-                href={link.path}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block text-sm text-primary-foreground/60 hover:text-teal transition-colors mb-2"
-              >
-                {link.label}
-              </a>
-            ) : (
-              <Link
-                key={link.label}
-                to={link.path}
-                className="block text-sm text-primary-foreground/60 hover:text-teal transition-colors mb-2"
-              >
-                {link.label}
-              </Link>
-            )
+// The Home & Contact footer from Paper page H; stacked on phones (page K).
+// "Cookie settings" appears only once something on the site needs consent.
+const Footer = () => {
+  const { needed } = useConsent();
+
+  return (
+    <footer className="bg-kn-teal text-white">
+      <div className="page-line flex flex-col gap-3.5 border-t border-[#FFFFEB33] pb-8 pt-7 text-[15px] leading-[22px] lg:text-sm xl:text-[15px] lg:flex-row lg:items-center lg:justify-between lg:gap-8 lg:py-7 lg:leading-[18px]">
+        <p className="text-lg font-semibold leading-[22px]">Kitso Nexus Advisory</p>
+
+        <p className="flex flex-col gap-1.5 lg:flex-row lg:gap-0">
+          <span>Gaborone, Botswana</span>
+          <span className="hidden lg:inline" aria-hidden="true">&nbsp;·&nbsp;</span>
+          <a href={`mailto:${EMAIL}`} className={link}>{EMAIL}</a>
+          <span className="hidden lg:inline" aria-hidden="true">&nbsp;·&nbsp;</span>
+          <a href={PHONE_TEL} className={link}>{PHONE_DISPLAY}</a>
+        </p>
+
+        <p>
+          <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer" className={link}>LinkedIn</a>
+          {dot}
+          <a href={FACEBOOK_URL} target="_blank" rel="noopener noreferrer" className={link}>Facebook</a>
+          {dot}
+          <Link to="/fit" className={link}>Fit check</Link>
+          {dot}
+          <Link to="/privacy" className={link}>Privacy</Link>
+          {needed && (
+            <>
+              {dot}
+              <button type="button" onClick={consent.reopen} className={link}>Cookie settings</button>
+            </>
           )}
-        </div>
-
-        {/* Col 3 */}
-        <div>
-          <h4 className="font-semibold text-sm mb-4 text-primary-foreground">Contact</h4>
-          <div className="space-y-2 text-sm text-primary-foreground/60">
-            <p>📍 Gaborone, Botswana</p>
-            <p>✉️ <a href="mailto:info@kitsonexus.com" className="hover:text-teal transition-colors">info@kitsonexus.com</a></p>
-            <p>📞  +267 73 989 514</p>
-            <p>🕐 Mon–Fri, 8:00 AM – 5:00 PM (CAT)</p>
-          </div>
-        </div>
+        </p>
       </div>
-
-      <div className="border-t border-primary-foreground/10 pt-6 text-center text-xs text-primary-foreground/40">
-        © 2026 Kitso Nexus Advisory (Pty) Ltd · All rights reserved · Gaborone, Botswana
-      </div>
-    </div>
-  </footer>
-);
+    </footer>
+  );
+};
 
 export default Footer;

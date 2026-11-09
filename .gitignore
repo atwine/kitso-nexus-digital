@@ -12,6 +12,11 @@ dist
 dist-ssr
 *.local
 
+# Secrets: API keys and passwords live in .env files and never in git
+.env
+.env.*
+!.env.example
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
@@ -22,3 +27,9 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Design-checker settings (local paths, session ids)
+.impeccable/
+
+# Local Netlify folder
+.netlify

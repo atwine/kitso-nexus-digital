@@ -9,6 +9,7 @@ export const OG_IMAGE = `${SITE_URL}/logo.jpeg`;
 export interface PageMeta {
   title: string;
   description: string;
+  image?: string; // the link preview picture, when a page has its own
 }
 
 export const PAGE_META = {
@@ -32,6 +33,17 @@ export const PAGE_META = {
     description:
       "Get in touch with Kitso Nexus Advisory. Book a free consultation or send us a message. Based in Gaborone, Botswana.",
   },
+  "/privacy": {
+    title: "Privacy Notice | Kitso Nexus Advisory",
+    description:
+      "What kitsonexus.com collects, why, who sees it and where it's kept, and how to stop our messages or have your details deleted.",
+  },
+  "/fit": {
+    title: "Is Odoo right for your business? Free 4-minute check | Kitso Nexus",
+    description:
+      "Answer a few quick questions and get an honest verdict, your business health score, and what your current way of working costs you each year, in Pula.",
+    image: `${SITE_URL}/og/fit-check.jpg`,
+  },
 } as const satisfies Record<string, PageMeta>;
 
 export type PagePath = keyof typeof PAGE_META;
@@ -39,3 +51,5 @@ export type PagePath = keyof typeof PAGE_META;
 export const PAGE_PATHS = Object.keys(PAGE_META) as PagePath[];
 
 export const pageUrl = (path: PagePath) => `${SITE_URL}${path}`;
+
+export const pageImage = (path: PagePath): string => (PAGE_META[path] as PageMeta).image ?? OG_IMAGE;

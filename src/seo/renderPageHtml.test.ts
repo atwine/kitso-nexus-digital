@@ -1,7 +1,8 @@
+/// <reference types="node" />
 import { readdirSync, readFileSync } from "fs";
 import { resolve } from "path";
 import { describe, it, expect } from "vitest";
-import { PAGE_META, PAGE_PATHS, PagePath, pageUrl } from "./pageMeta";
+import { PAGE_META, PAGE_PATHS, PagePath, pageImage, pageUrl } from "./pageMeta";
 import { renderPageHtml } from "./renderPageHtml";
 
 const root = resolve(__dirname, "../..");
@@ -25,6 +26,14 @@ describe("renderPageHtml", () => {
     expect(attr(head, 'meta[property="og:url"]', "content")).toBe(pageUrl(route));
     expect(attr(head, 'meta[name="twitter:title"]', "content")).toBe(title);
     expect(attr(head, 'meta[name="twitter:description"]', "content")).toBe(description);
+    expect(attr(head, 'meta[property="og:image"]', "content")).toBe(pageImage(route));
+    expect(attr(head, 'meta[name="twitter:image"]', "content")).toBe(pageImage(route));
+  });
+
+  it("gives the fit check its own share picture, and that picture exists", () => {
+    expect(pageImage("/fit")).toBe("https://www.kitsonexus.com/og/fit-check.jpg");
+    expect(pageImage("/about")).toBe("https://www.kitsonexus.com/logo.jpeg");
+    expect(() => readFileSync(resolve(root, "public/og/fit-check.jpg"))).not.toThrow();
   });
 
   it("fails loudly when index.html is missing a tag it should rewrite", () => {
