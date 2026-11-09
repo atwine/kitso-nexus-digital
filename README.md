@@ -55,3 +55,13 @@ Each page's title, description and (optionally) its own share picture live in `s
 Hosted on Netlify. `public/_redirects` sends unknown paths to `index.html` so client-side routing works.
 
 Brand colours are CSS variables in `src/index.css`; `.lovable/plan.md` explains how the old class names (`navy`, `teal`, `blue`) map to the current palette.
+
+## Release notes
+
+### 9 November 2026: the new site
+
+- Every page has the new design: Home, Services, About, Contact and Privacy.
+- The fit check is at `/fit`, and the report page is at `/fit/report`.
+- Fit checks, Contact notes and Cal.com bookings go to Odoo, with an alert email to `ALERT_TO`.
+- The team gets a morning email with the fit check's step counts after any day when someone took the check.
+- Netlify needs the ten settings named in `.env.example`. A changed setting takes effect at the next deploy.
