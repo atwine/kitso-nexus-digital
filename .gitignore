@@ -33,3 +33,6 @@ dist-ssr
 
 # Local Netlify folder
 .netlify
+
+# The written access rules hold private business decisions, and this repository is public
+/ACCESS.md
