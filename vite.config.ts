@@ -33,11 +33,19 @@ const pageMetaHtml = (): Plugin => {
 // https://vitejs.dev/config/
 export default defineConfig(() => ({
   server: {
-    host: "::",
+    // Only this computer can open the preview. Phone testing opts in separately.
+    host: "127.0.0.1",
     port: 8080,
+    strictPort: true,
     hmr: {
       overlay: false,
     },
+  },
+  // Tailwind 4 runs through its Vite plugin, so PostCSS needs nothing. An inline
+  // config also stops Vite searching parent folders and finding the main
+  // checkout's old Tailwind 3 postcss.config.js.
+  css: {
+    postcss: { plugins: [] },
   },
   plugins: [react(), tailwindcss(), pageMetaHtml()],
   resolve: {

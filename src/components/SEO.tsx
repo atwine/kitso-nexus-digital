@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { OG_IMAGE, PAGE_META, PagePath, pageUrl } from "@/seo/pageMeta";
+import { PAGE_META, PagePath, pageImage, pageUrl } from "@/seo/pageMeta";
 
 interface SEOProps {
   path: PagePath;
@@ -10,6 +10,7 @@ interface SEOProps {
 const SEO = ({ path }: SEOProps) => {
   const { title, description } = PAGE_META[path];
   const url = pageUrl(path);
+  const image = pageImage(path);
 
   useEffect(() => {
     document.title = title;
@@ -29,7 +30,8 @@ const SEO = ({ path }: SEOProps) => {
     setMeta("property", "og:description", description);
     setMeta("property", "og:url", url);
     setMeta("property", "og:type", "website");
-    setMeta("property", "og:image", OG_IMAGE);
+    setMeta("property", "og:image", image);
+    setMeta("name", "twitter:image", image);
     setMeta("name", "twitter:title", title);
     setMeta("name", "twitter:description", description);
 
@@ -44,7 +46,7 @@ const SEO = ({ path }: SEOProps) => {
     return () => {
       document.title = "Kitso Nexus Advisory";
     };
-  }, [title, description, url]);
+  }, [title, description, url, image]);
 
   return null;
 };

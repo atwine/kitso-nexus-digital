@@ -1,32 +1,64 @@
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap')
-layer(base);
-
 @import 'tailwindcss';
 
 @import 'tw-animate-css';
 
 @custom-variant dark (&:is(.dark *));
 
-@utility container {
-  margin-inline: auto;
-  padding-inline: 2rem;
-  @media (width >= --theme(--breakpoint-sm)) {
-    max-width: none;
-  }
-  @media (width >= 1400px) {
-    max-width: 1400px;
-  }
+/* Inter is served from the site itself, so visitors' browsers never contact
+   Google for it. Latin subset of the variable font, weights 400-800.
+   Licence: public/fonts/Inter-LICENSE.txt (SIL Open Font License 1.1). */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400 800;
+  font-display: swap;
+  src: url('/fonts/inter-latin-var.woff2') format('woff2');
+}
+
+/*
+  The one left and right line every page section sits on: header, hero, content
+  and footer. The margin grows with the screen, and on very wide screens the
+  content stays 1200px wide and centred.
+  Between 1024 and 1099px the margin is 32px so the header's tagline still fits
+  (owner's pick, Sprint 7b); the rest of the page follows so nothing juts out.
+*/
+:root {
+  --page-margin: 1rem;
+}
+@media (min-width: 640px) {
+  :root { --page-margin: 1.5rem; }
+}
+@media (min-width: 1024px) {
+  :root { --page-margin: 2rem; }
+}
+@media (min-width: 1100px) {
+  :root { --page-margin: 4rem; }
+}
+@media (min-width: 1280px) {
+  :root { --page-margin: 7.5rem; }
+}
+
+@utility page-line {
+  padding-inline: max(var(--page-margin), calc((100% - 1200px) / 2));
 }
 
 @theme {
-  --font-sans: 'Plus Jakarta Sans', sans-serif;
+  --font-sans: 'Inter', system-ui, sans-serif;
 
-  --color-navy: hsl(var(--navy));
-  --color-teal: hsl(var(--teal));
-  --color-blue: hsl(var(--blue));
-  --color-whatsapp: hsl(var(--whatsapp));
-  --color-surface: hsl(var(--surface));
-  --color-border-custom: hsl(var(--border-custom));
+  /* Boardroom palette from the approved Paper design (page H). */
+  --color-kn-teal: #0c4243;
+  --color-kn-stone: #f7f5f2;
+  --color-kn-card: #f2f0eb;
+  --color-kn-night: #141413;
+  --color-kn-lime: #a5c337;
+  --color-kn-olive: #4f6216;
+  --color-kn-body: #4a4845;
+  --color-kn-muted: #6b6965;
+  --color-kn-line: #e3e3e3;
+  --color-kn-whatsapp: #25d466;
+  --color-kn-whatsapp-ink: #062a14;
+  --color-kn-terracotta: #c25c3d;
+
   --color-border: hsl(var(--border));
   --color-input: hsl(var(--input));
   --color-ring: hsl(var(--ring));
@@ -64,10 +96,6 @@ layer(base);
   --color-sidebar-ring: hsl(var(--sidebar-ring));
 
   /* v3 values for the stock palette colours in use; v4 redrew the palette. */
-  --color-amber-500: #f59e0b;
-  --color-orange-400: #fb923c;
-  --color-rose-400: #fb7185;
-  --color-violet-400: #a78bfa;
   --color-red-50: #fef2f2;
   --color-red-300: #fca5a5;
   --color-red-400: #f87171;
@@ -121,180 +149,46 @@ layer(base);
   }
 }
 
-@utility text-navy {
-  color: hsl(var(--navy));
-}
-
-@utility bg-navy {
-  background-color: hsl(var(--navy));
-}
-
-@utility text-teal {
-  color: hsl(var(--teal));
-}
-
-@utility bg-teal {
-  background-color: hsl(var(--teal));
-}
-
-@utility text-blue {
-  color: hsl(var(--blue));
-}
-
-@utility bg-blue {
-  background-color: hsl(var(--blue));
-}
-
-@utility bg-surface {
-  background-color: hsl(var(--surface));
-}
-
-@utility border-custom {
-  border-color: hsl(var(--border-custom));
-}
-
-@utility bg-whatsapp {
-  background-color: hsl(var(--whatsapp));
-}
-
-@utility text-whatsapp {
-  color: hsl(var(--whatsapp));
-}
-
-@utility section-label {
-  @apply text-teal text-xs font-semibold uppercase tracking-[0.15em];
-}
-
-@utility card-service {
-  @apply bg-card border border-custom rounded-lg p-6 transition-all duration-300;
-  &:hover {
-    @apply border-teal shadow-md;
-    transform: translateY(-3px);
-  }
-}
-
-@utility btn-hover {
-  @apply transition-all duration-200;
-  &:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px hsl(14 52% 50% / 0.3);
-  }
-}
-
-@utility btn-whatsapp-hover {
-  &:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px hsl(var(--whatsapp) / 0.3);
-  }
-}
-
-@utility fade-in {
-  animation: fadeInUp 0.6s ease-out both;
-}
-
-@utility fade-in-delay-1 {
-  animation-delay: 0.1s;
-}
-
-@utility fade-in-delay-2 {
-  animation-delay: 0.2s;
-}
-
-@utility fade-in-delay-3 {
-  animation-delay: 0.3s;
-}
-
-@utility fade-in-delay-4 {
-  animation-delay: 0.4s;
-}
-
-@utility fade-in-delay-5 {
-  animation-delay: 0.5s;
-}
-
-@utility hero-section {
-  background-color: hsl(var(--navy));
-  background-image:
-    radial-gradient(
-      ellipse 600px 400px at 80% 20%,
-      hsl(73 56% 49% / 0.15),
-      transparent
-    ),
-    radial-gradient(
-      ellipse 500px 400px at 20% 80%,
-      hsl(14 52% 50% / 0.12),
-      transparent
-    ),
-    url('/hero/abstract-tech-16x9.webp');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-
-  @media (max-width: 1024px) {
-    background-image:
-      radial-gradient(
-        ellipse 600px 400px at 80% 20%,
-        hsl(73 56% 49% / 0.15),
-        transparent
-      ),
-      radial-gradient(
-        ellipse 500px 400px at 20% 80%,
-        hsl(14 52% 50% / 0.12),
-        transparent
-      ),
-      url('/hero/abstract-tech-4x3.webp');
-  }
-}
-
 @layer base {
   :root {
-    --font-sans: 'Plus Jakarta Sans', sans-serif;
+    --background: 0 0% 100%;
+    --foreground: 60 3% 8%; /* #141413 */
 
-    --navy: 180 100% 15%;
-    --teal: 73 56% 49%;
-    --blue: 14 52% 50%;
-    --whatsapp: 142 70% 49%;
-    --surface: 38 50% 91%;
-    --border-custom: 38 30% 85%;
+    --card: 0 0% 100%;
+    --card-foreground: 60 3% 8%;
 
-    --background: 40 100% 95%;
-    --foreground: 0 0% 20%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 60 3% 8%;
 
-    --card: 40 100% 97%;
-    --card-foreground: 0 0% 20%;
-
-    --popover: 40 100% 97%;
-    --popover-foreground: 0 0% 20%;
-
-    --primary: 14 52% 50%;
+    --primary: 181 70% 15%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 38 50% 91%;
-    --secondary-foreground: 0 0% 20%;
+    --secondary: 43 21% 93%; /* #F2F0EB */
+    --secondary-foreground: 60 3% 8%;
 
-    --muted: 38 30% 90%;
-    --muted-foreground: 0 0% 40%;
+    --muted: 43 21% 93%;
+    --muted-foreground: 40 3% 41%; /* #6B6965 */
 
     --accent: 73 56% 49%;
-    --accent-foreground: 0 0% 100%;
+    --accent-foreground: 60 3% 8%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 38 30% 85%;
-    --input: 38 30% 85%;
-    --ring: 14 52% 50%;
+    --border: 0 0% 89%;
+    --input: 0 0% 89%;
+    --ring: 181 70% 15%;
 
     --radius: 0.5rem;
 
-    --sidebar-background: 40 100% 96%;
-    --sidebar-foreground: 0 0% 20%;
-    --sidebar-primary: 180 100% 15%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 38 50% 91%;
-    --sidebar-accent-foreground: 0 0% 20%;
-    --sidebar-border: 38 30% 85%;
-    --sidebar-ring: 14 52% 50%;
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 60 3% 8%;
+    --sidebar-primary: 181 70% 15%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 43 21% 93%;
+    --sidebar-accent-foreground: 60 3% 8%;
+    --sidebar-border: 0 0% 89%;
+    --sidebar-ring: 181 70% 15%;
   }
 }
 
@@ -307,34 +201,15 @@ layer(base);
     @apply bg-background text-foreground font-sans antialiased;
   }
 
+  /* In-page jumps (the Services hero buttons) glide, unless the visitor asks for less motion. */
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+
   h1, h2, h3, h4, h5, h6 {
-    @apply text-navy font-bold tracking-tight;
-  }
-}
-
-@layer utilities {
-  @keyframes fadeInUp {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  .group:hover .flip-inner {
-    transform: rotateY(180deg) scale(1.08);
-    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.18);
-  }
-
-  @keyframes progressSweep {
-    from {
-      transform: scaleX(0);
-    }
-    to {
-      transform: scaleX(1);
-    }
+    @apply text-kn-night font-semibold;
+    letter-spacing: -0.03em;
   }
 }

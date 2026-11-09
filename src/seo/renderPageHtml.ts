@@ -1,4 +1,4 @@
-import { PAGE_META, PagePath, pageUrl } from "./pageMeta";
+import { PAGE_META, PagePath, pageImage, pageUrl } from "./pageMeta";
 
 const escapeHtml = (s: string) =>
   s.replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
@@ -19,6 +19,8 @@ export const renderPageHtml = (template: string, path: PagePath): string => {
     ['<meta property="og:url" content="', url],
     ['<meta name="twitter:title" content="', title],
     ['<meta name="twitter:description" content="', description],
+    ['<meta property="og:image" content="', pageImage(path)],
+    ['<meta name="twitter:image" content="', pageImage(path)],
   ];
 
   const swap = (html: string, pattern: RegExp, value: string) => {

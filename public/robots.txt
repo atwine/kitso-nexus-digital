@@ -1,3 +1,4 @@
 User-agent: *
 Allow: /
+Disallow: /fit/report
 Sitemap: https://www.kitsonexus.com/sitemap.xml
